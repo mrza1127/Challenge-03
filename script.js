@@ -17,8 +17,6 @@ var confirmLength = "";
 
 
 function generatePassword() {
-    console.log("Yo! You clicked the button!");
-
 // 1. You need to prompt the user for the password criteria
 //      a. Password length between 8 > 128
     var confirmLength = (prompt ("How many characters would you like your password to have?"));
