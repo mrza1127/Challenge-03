@@ -1,5 +1,6 @@
 // Calls the button to generate
 var generateBtn = document.querySelector("#generate");
+generateBtn.addEventListener("click", writePassword);
 
 // arrays with the criteria to be met
 var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -41,20 +42,31 @@ function generatePassword() {
             var confirmSpecialChar = confirm("Click OK to have password contain special characters");  
         } 
 // 3. Generate password based on criteria
-
-
-
+    var passwordCriteria = []
+        if (confirmLowerCase) {
+            passwordCriteria = passwordCriteria.concat(alphaLower);
+        }
+        if (confirmUpperCase) {
+            passwordCriteria = passwordCriteria.concat(alphaUpper);
+        }
+        if (confirmNumericChar) {
+            passwordCriteria = passwordCriteria.concat(number);
+        }
+        if (confirmSpecialChar) {
+            passwordCriteria = passwordCriteria.concat(special);
+        }
+    var newPassword = ""
+    for (var i = 0; i < confirmLength; i++) {
+        newPassword = newPassword + passwordCriteria[Math.floor(Math.random() * passwordCriteria.length)];
+    } 
 // 4. Display generated password on the page
-    return "Generated password will go here!";
+    return newPassword;
 }
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
