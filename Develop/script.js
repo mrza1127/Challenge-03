@@ -16,12 +16,30 @@ var confirmLength = "";
 
 
 function generatePassword() {
-    console.log("Hey! You clicked the button!");
+    console.log("Yo! You clicked the button!");
 
 // 1. You need to prompt the user for the password criteria
 //      a. Password length between 8 > 128
+    var confirmLength = (prompt ("How many characters would you like your password to have?"));
+        if (!confirmLength) {
+            alert("Don't leave blank! Try again.");
+    }
+        else if (confirmLength < 8 || confirmLength > 128) {
+            var confirmLength = (prompt("Must choose a number between 8-128 characters."));
+        }
 //      b. Lowercase, uppercase, numbers, special characters
+    var confirmLowerCase = confirm("Click OK to have password contain lowercase letters");
+    var confirmUpperCase = confirm("Click OK to have password contain uppercase letters");
+    var confirmNumericChar = confirm("Click OK to have password contain numbers");
+    var confirmSpecialChar = confirm("Click OK to have password contain special characters");
 // 2. Validate the input
+        if(!confirmLowerCase && !confirmUpperCase && !confirmNumericChar && !confirmSpecialChar) {
+          alert("You must choose a criteria!");
+            var confirmLowerCase = confirm("Click OK to have password contain lowercase letters");
+            var confirmUpperCase = confirm("Click OK to have password contain uppercase letters");
+            var confirmNumericChar = confirm("Click OK to have password contain numbers");
+            var confirmSpecialChar = confirm("Click OK to have password contain special characters");  
+        } 
 // 3. Generate password based on criteria
 
 
